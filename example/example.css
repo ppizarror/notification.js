@@ -91,6 +91,21 @@ Title
     padding-bottom: 15px;
 }
 
+.title-demo {
+    font-size: 1.5rem;
+    font-weight: 300;
+    left: -4px;
+    position: relative;
+    top: -20px;
+}
+
+@media screen and (max-width: 576px) {
+    .title-demo {
+        left: -5px;
+        top: -15px;
+    }
+}
+
 /**
 -------------------------------------------------------------------------------
 Panel options
