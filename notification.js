@@ -3,13 +3,13 @@
  * Notification wrapper that offers an common interface to different javascript notification libraries around there
  *
  * Avaiable libraries:
- *      - toastr
- *      - amaranJS
- *      - jquery-toast-plugin
+ *      - amaranJS                  [https://github.com/hakanersu/AmaranJS]
+ *      - jquery-toast-plugin       [https://github.com/kamranahmedse/jquery-toast-plugin]
+ *      - toastr                    [https://github.com/CodeSeven/toastr]
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 /**
@@ -287,7 +287,6 @@ let NotificationJS;
 
                 /**
                  * Toastr
-                 * https://github.com/CodeSeven/toastr
                  */
                 case this.lib.TOASTR:
 
@@ -395,7 +394,6 @@ let NotificationJS;
 
                 /**
                  * amaranJS
-                 * https://github.com/hakanersu/AmaranJS
                  */
                 case this.lib.AMARANJS:
 
@@ -530,7 +528,6 @@ let NotificationJS;
 
                 /**
                  * jquery-toast-plugin
-                 * https://github.com/kamranahmedse/jquery-toast-plugin
                  */
                 case this.lib.JQUERYTOAST:
 
