@@ -1,0 +1,9 @@
+# Webstorm files
+.idea/
+
+# Dist other files
+dist/*.zip
+
+# Root min files
+*.min.js
+*.min.css

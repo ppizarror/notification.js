@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification.js</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <!-- Import dependencies -->
+    <script src="example/jquery-3.3.1.min.js"></script>
+    <script src="example/AmaranJS/jquery.amaran.min.js"></script>
+    <script src="example/jquery-toast-plugin/jquery.toast.min.js"></script>
+    <script src="example/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="example/AmaranJS/amaran.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="example/jquery-toast-plugin/jquery.toast.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="example/toastr/toastr.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="example/example.min.css" media="screen">
+
+    <!-- notification.js -->
+    <script src="notification.js"></script>
+    <link rel="stylesheet" type="text/css" href="notification.css" media="screen">
+</head>
+<body>
+
+<!-- Test -->
+<script>
+    NotificationJS.init({core: 'amaranjs'});
+    NotificationJS.warning('Test');
+</script>
+
+</body>
+</html>
