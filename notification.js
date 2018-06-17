@@ -9,7 +9,7 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.2
+ * @version 0.1.3
  */
 
 /**
