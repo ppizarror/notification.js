@@ -9,7 +9,7 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 /**
@@ -217,7 +217,6 @@ let NotificationJS;
      * @extends {_NotificationType}
      * @constructor
      * @private
-     * @ignore
      * @since 2.8.23
      */
     let _NotificationManager = function (options) {
@@ -353,9 +352,7 @@ let NotificationJS;
                     };
 
                     this.clearlast = function () {
-                        if (self._isNullUndf(self._lastToast)) {
-                            toastr.clear(self._lastToast);
-                        }
+                        if (self._isNullUndf(self._lastToast)) toastr.clear(self._lastToast);
                     };
 
                     this.error = function (msg, $options) {
