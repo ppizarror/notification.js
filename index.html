@@ -17,10 +17,6 @@
 
     <!-- Core libraries -->
     <script src="example/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" media="screen">
 
     <!-- Import notification libraries -->
     <script src="example/AmaranJS/jquery.amaran.min.js"></script>
@@ -31,20 +27,46 @@
     <link rel="stylesheet" type="text/css" href="example/toastr/toastr.min.css" media="screen">
 
     <!-- notification.js -->
-    <script src="notification.js"></script>
-    <link rel="stylesheet" type="text/css" href="notification.css" media="screen">
+    <script src="notification.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="notification.min.css" media="screen">
 
     <!-- Example files -->
+    <script src="example/example.min.js"></script>
+    <script src="example/bootstrap-switch.min.js"></script>
     <link rel="stylesheet" type="text/css" href="example/example.min.css" media="screen">
-
+    <link rel="stylesheet" type="text/css" href="example/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="example/font-awesome-v5/css/fontawesome-all.min.css" media="screen">
 </head>
 <body>
-
-<!-- Test -->
-<script>
-    NotificationJS.init({core: NotificationJS.lib.TOASTR});
-    NotificationJS.warning('Test');
-</script>
-
+<div id="panel" class="main-panel">
+    <div class="main-panel-title"><i class="fas fa-bell"></i> notification.js</div>
+    <div class="panel-options">
+        <select id="notification-lib" title="" class="form-control"></select>
+        <div class="other-options">
+            <div class="message">
+                <div class="message-text">Message</div>
+                <div class="message-input">
+                    <input type="text" class="form-control" id="notificationMessage" autocomplete="off"
+                           placeholder="Notification message">
+                </div>
+            </div>
+            <div class="message">
+                <div class="message-text">Max stack</div>
+                <div class="message-input">
+                    <input type="text" class="form-control" id="maxStack" autocomplete="off" title="">
+                </div>
+            </div>
+            <div class="option-check">
+                <div class="message-text">Enabled</div>
+                <div class="message-input">
+                    <input type="checkbox" checked="checked" class="form-control" id="enabledMessage" title="">
+                </div>
+            </div>
+            <pre class="options-javascript">
+            </pre>
+        </div>
+    </div>
+    <div class="panel-calls">B</div>
+</div>
 </body>
 </html>

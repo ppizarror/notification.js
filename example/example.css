@@ -7,7 +7,9 @@
  */
 
 /**
+-------------------------------------------------------------------------------
 Base elements
+-------------------------------------------------------------------------------
  */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
@@ -16,7 +18,28 @@ body {
 }
 
 pre {
-    font-family: Consolas, monospace;
+    padding: 5px;
+    margin: 5px;
+}
+
+.string {
+    color: green;
+}
+
+.number {
+    color: darkorange;
+}
+
+.boolean {
+    color: blue;
+}
+
+.null {
+    color: magenta;
+}
+
+.key {
+    color: red;
 }
 
 *,
@@ -24,3 +47,114 @@ pre {
 *::after {
     box-sizing: border-box;
 }
+
+/**
+-------------------------------------------------------------------------------
+Main panel
+-------------------------------------------------------------------------------
+ */
+.main-panel {
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.03);
+    display: flow-root;
+    margin: 0 auto;
+    max-height: 600px;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+@media screen and (max-width: 576px) {
+    .main-panel {
+        padding: 5px;
+        width: 90%;
+    }
+}
+
+/**
+Title
+ */
+.main-panel-title {
+    font-size: 2.25rem;
+    font-weight: 400;
+    padding-bottom: 15px;
+}
+
+/**
+-------------------------------------------------------------------------------
+Panel options
+-------------------------------------------------------------------------------
+ */
+.panel-options {
+    float: left;
+    padding-right: 10px;
+    width: 40%;
+}
+
+.other-options {
+    padding-top: 15px;
+}
+
+.message, .option-check {
+    display: flex;
+    padding-bottom: 8px;
+}
+
+/**
+Message text
+ */
+.message-text {
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 300;
+    height: 38px;
+    line-height: 38px;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 40%;
+}
+
+/**
+Message input
+ */
+.message-input {
+    width: 60%;
+    float: left;
+}
+
+@media screen and (max-width: 576px) {
+    .panel-options, .panel-calls {
+        width: 50% !important;
+    }
+}
+
+/**
+Option javascript json
+ */
+.options-javascript {
+    background-color: #fefefe;
+    border-radius: 5px;
+    border: 1px dashed #9d9d9d;
+    margin-top: 25px;
+    max-height: 150px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+/**
+-------------------------------------------------------------------------------
+Panel call buttons
+-------------------------------------------------------------------------------
+ */
+.panel-calls {
+    background-color: #1255AA;
+    width: 60%;
+    float: left;
+}
+
