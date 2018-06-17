@@ -1,6 +1,6 @@
 /**
  * notification.js
- * Notification wrapper that offers an common interface to many different javascript notification libraries around there
+ * Notification wrapper that offers an common interface to different javascript notification libraries around there
  *
  * Avaiable libraries:
  *      - toastr
@@ -9,6 +9,7 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
+ * @version 0.1.0
  */
 
 /**
@@ -223,12 +224,14 @@ let NotificationJS;
         _NotificationType.call(this);
 
         /**
-         * Object pointer
-         * @type {_NotificationManager}
-         * @private
-         * @ignore
+         * Avaiable libraries
+         * @public
          */
-        let self = this;
+        this.lib = {
+            AMARANJS: 'amaranjs',
+            JQUERYTOAST: 'jquery-toast-plugin',
+            TOASTR: 'toastr',
+        };
 
         /**
          * Default parameters
@@ -256,8 +259,14 @@ let NotificationJS;
         // Extend options
         options = Object.assign($defaults, options);
 
-        // Valid notification libraries
-        let _notificationLibraries = ['toastr', 'amaranjs', 'jquery-toast-plugin'];
+
+        /**
+         * Object pointer
+         * @type {_NotificationManager}
+         * @private
+         * @ignore
+         */
+        let self = this;
 
         /**
          * Inits notification manager
@@ -266,16 +275,11 @@ let NotificationJS;
          */
         this.init = function ($options) {
 
-            options = Object.assign(options, $options);
-
             /**
-             * Parses user input and check if library exists
+             * Extend options
+             * @type {Object}
              */
-            options.core = options.core.toString().toLowerCase();
-            if (_notificationLibraries.indexOf(options.core) === -1) {
-                console.error('notication.js: Notification library \'' + options.core + ' \' unknown');
-                return;
-            }
+            options = Object.assign(options, $options);
 
             /**
              * Init notifications
@@ -286,7 +290,7 @@ let NotificationJS;
                  * Toastr
                  * https://github.com/CodeSeven/toastr
                  */
-                case 'toastr':
+                case this.lib.TOASTR:
 
                     this._lastToast = null;
                     this._toastStacks = []; // Saves notification until maxStack
@@ -396,7 +400,7 @@ let NotificationJS;
                  * amaranJS
                  * https://github.com/hakanersu/AmaranJS
                  */
-                case 'amaranjs':
+                case this.lib.AMARANJS:
 
                     this.clearall = function () {
                         $.amaran({
@@ -531,7 +535,7 @@ let NotificationJS;
                  * jquery-toast-plugin
                  * https://github.com/kamranahmedse/jquery-toast-plugin
                  */
-                case 'jquery-toast-plugin':
+                case this.lib.JQUERYTOAST:
 
                     self._lastToast = null;
 
@@ -571,7 +575,7 @@ let NotificationJS;
                             $delay *= 2;
                         }
 
-                        // Opciones de creación
+                        // Creation options
                         let $toastopt = {
                             allowToastClose: $closebutton,
                             hideAfter: $delay,
@@ -664,6 +668,13 @@ let NotificationJS;
                         self._toast(msg, $options);
                     };
 
+                    break;
+
+                /**
+                 * Unknown library
+                 */
+                default:
+                    console.error('notication.js: Notification library \'' + options.core + ' \' unknown');
                     break;
 
             }
