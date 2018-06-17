@@ -10,6 +10,10 @@
     padding: 15px 15px 15px 50px;
 }
 
+.jq-notification-clickeable:hover {
+    cursor: pointer !important;
+}
+
 @media screen and (max-width: 576px) {
     .jq-has-icon {
         background-position: 5px !important;

@@ -309,7 +309,7 @@ let NotificationJS;
                         let $timeout = options.timeout;
 
                         // Persistent mode
-                        if ($options.persistent) {
+                        if ($options.persistent || $timeout === 0) {
                             $closebutton = true;
                             $timeout = 0;
                         }
@@ -355,36 +355,42 @@ let NotificationJS;
                     };
 
                     this.error = function (msg, $options) {
+                        if (msg === '' || !options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['error'](self._format(msg));
                         self._toastStacks.push(self._lastToast);
                     };
 
                     this.exception = function (e, $options) {
+                        if (!options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['error'](self._format(e.message), 'Exception');
                         self._toastStacks.push(self._lastToast);
                     };
 
                     this.info = function (msg, $options) {
+                        if (msg === '' || !options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['info'](self._format(msg));
                         self._toastStacks.push(self._lastToast);
                     };
 
                     this.other = function (msg, $options) {
+                        if (msg === '' || !options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['info'](self._format(msg));
                         self._toastStacks.push(self._lastToast);
                     };
 
                     this.success = function (msg, $options) {
+                        if (msg === '' || !options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['success'](self._format(msg));
                         self._toastStacks.push(self._lastToast);
                     };
 
                     this.warning = function (msg, $options) {
+                        if (msg === '' || !options.enabled) return;
                         self._toastr($options);
                         self._lastToast = toastr['warning'](self._format(msg));
                         self._toastStacks.push(self._lastToast);
@@ -397,15 +403,21 @@ let NotificationJS;
                  */
                 case this.lib.AMARANJS:
 
+                    this._lastAmaran = false;
+                    this._activeAmaran = 0;
+
                     this.clearall = function () {
-                        $.amaran({
-                            'clearAll': true
+                        if (!this._lastAmaran) return;
+                        if (this._activeAmaran === 0) return;
+                        $('.amaran-wrapper').each(function () {
+                            $(this).remove();
                         });
                     };
 
                     this._amaranjs = function (msg, $options) {
 
                         // Content
+                        if (msg === '' || !options.enabled) return;
                         let $content = {
                             message: self._format(msg)
                         };
@@ -413,13 +425,13 @@ let NotificationJS;
                         // Extend params
                         $options = self._extendOptions($options);
                         let $closebutton = false;
-                        let $delay = $options.timeout;
+                        let $delay = options.timeout;
                         let $sticky = false;
                         let $onclick = function () {
                         };
 
                         // Persistent
-                        if ($options.persistent) {
+                        if ($options.persistent || $delay === 0) {
                             $closebutton = true;
                             $sticky = true;
                         }
@@ -473,6 +485,9 @@ let NotificationJS;
 
                         // Creates amaran object
                         $.amaran({
+                            afterEnd: function () {
+                                self._activeAmaran -= 1;
+                            },
                             clearAll: false,
                             closeButton: $closebutton,
                             closeOnClick: true,
@@ -491,6 +506,8 @@ let NotificationJS;
                             theme: $theme,
                             themeTemplate: null
                         });
+                        this._lastAmaran = true;
+                        self._activeAmaran += 1;
 
                     };
 
@@ -534,7 +551,7 @@ let NotificationJS;
                     self._lastToast = null;
 
                     this.clearall = function () {
-                        $.toast().reset('all');
+                        if (self._lastToast !== null) $.toast().reset('all');
                         self._lastToast = null;
                     };
 
@@ -549,12 +566,18 @@ let NotificationJS;
 
                         // Extend options
                         $options = self._extendOptions($options);
+                        if (msg === '' || !options.enabled) return;
 
-                        let $delay = $options.timeout;
+                        let $delay = options.timeout;
                         let $closebutton = false;
 
+                        // Double time
+                        if ($options.doubletime) {
+                            $delay *= 2;
+                        }
+
                         // Persistent, set sticky to true
-                        if ($options.persistent) {
+                        if ($options.persistent || $delay === 0) {
                             $closebutton = true;
                             $delay = false;
                         }
@@ -562,11 +585,6 @@ let NotificationJS;
                         // Show close icon
                         if ($options.closebutton) {
                             $closebutton = true;
-                        }
-
-                        // Double time
-                        if ($options.doubletime) {
-                            $delay *= 2;
                         }
 
                         // Creation options

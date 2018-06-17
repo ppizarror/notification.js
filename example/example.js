@@ -82,6 +82,44 @@ $(function () {
         maxStack: 5,
         timeout: 5000,
     };
+    let $calls = {
+        info: {
+            msg: 'NotificationJS.info(<span class="call-message">"{0}</span>", {1})',
+            params: {persistent: true},
+            fun: function ($t) {
+                $('#callInfo').html($calls.info.msg.format($t, JSON.stringify($calls.info.params)));
+            },
+        },
+        success: {
+            msg: 'NotificationJS.success(<span class="call-message">"{0}</span>", {1})',
+            params: {},
+            fun: function ($t) {
+                $('#callSuccess').html($calls.success.msg.format($t, JSON.stringify($calls.success.params)));
+            },
+        },
+        warning: {
+            msg: 'NotificationJS.warning(<span class="call-message">"{0}</span>", {1})',
+            params: {closebutton: true, doubletime: true},
+            fun: function ($t) {
+                $('#callWarning').html($calls.warning.msg.format($t, JSON.stringify($calls.warning.params)));
+            },
+        },
+        error: {
+            msg: 'NotificationJS.error(<span class="call-message">"{0}</span>", {1})',
+            params: {onclick: function () {alert('ppizarror');}},
+            fun: function ($t) {
+                $('#callError').html($calls.error.msg.format($t, '{"onclick": function () {alert("ppizarror");}'));
+            }
+        },
+        other: {
+            msg: 'NotificationJS.other(<span class="call-message">"{0}</span>", {1})',
+            params: {},
+            fun: function ($t) {
+                $('#callOther').html($calls.other.msg.format($t, '{}'));
+            }
+        }
+    };
+    let $callsk = Object.keys($calls);
 
     /**
      * ------------------------------------------------------------------------
@@ -97,16 +135,35 @@ $(function () {
         $select.append('<option value="{0}">{0}</option>'.format($libs[$k[i]]));
     }
     $select.on('change', function () {
+        NotificationJS.clearall();
         $init.core = $select.val();
         $writeOptions();
     });
     $init.core = $select.val();
 
+    // Message
+    let $message = $('#notificationMessage');
+    let $changeCallMsg = function () {
+        let $text = $message.val();
+        for (let i = 0; i < $callsk.length; i++) $calls[$callsk[i]].fun($text);
+    };
+    $message.on('keyup', function () {
+        $changeCallMsg();
+    });
+
+    // Timeout
+    let $timeout = $('#timeout');
+    $timeout.val($init.timeout);
+    $timeout.on('change', function () {
+        $init.timeout = parseInt($timeout.val().toString());
+        $writeOptions();
+    });
+
     // Max stack
     let $maxStack = $('#maxStack');
     $maxStack.val($init.maxStack);
     $maxStack.on('change', function () {
-        $init.maxStack = parseInt($maxStack.val());
+        $init.maxStack = parseInt($maxStack.val().toString());
         $writeOptions();
     });
 
@@ -132,5 +189,40 @@ $(function () {
      * Write calls
      * ------------------------------------------------------------------------
      */
+
+    let $callPanel = $('.panel-calls');
+
+    // Info notification
+    $callPanel.append('<div class="call info noselect" id="callInfo"></div>');
+    $('#callInfo').on('click', function () {
+        NotificationJS.info($('#notificationMessage').val(), $calls.info.params);
+    });
+
+    // Success notification
+    $callPanel.append('<div class="call success noselect" id="callSuccess"></div>');
+    $('#callSuccess').on('click', function () {
+        NotificationJS.success($('#notificationMessage').val(), $calls.success.params);
+    });
+
+    // Warning notification
+    $callPanel.append('<div class="call warn noselect" id="callWarning"></div>');
+    $('#callWarning').on('click', function () {
+        NotificationJS.warning($('#notificationMessage').val(), $calls.warning.params);
+    });
+
+    // Error notification
+    $callPanel.append('<div class="call errorcall noselect" id="callError"></div>');
+    $('#callError').on('click', function () {
+        NotificationJS.error($('#notificationMessage').val(), $calls.error.params);
+    });
+
+    // Other notification
+    $callPanel.append('<div class="call othercall noselect" id="callOther"></div>');
+    $('#callOther').on('click', function () {
+        NotificationJS.other($('#notificationMessage').val(), $calls.other.params);
+    });
+
+    // Set message
+    $changeCallMsg();
 
 });
