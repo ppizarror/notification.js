@@ -222,3 +222,19 @@ Panel call buttons
 .call.othercall {
     background: linear-gradient(to right, #cacaca, #f6f7f8);
 }
+
+.callBottom {
+    margin-left: 10px;
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 576px) {
+    .callBottom {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+.callBottom .btn {
+    margin-right: 10px;
+}

@@ -551,7 +551,7 @@ let NotificationJS;
                     self._lastToast = null;
 
                     this.clearall = function () {
-                        if (self._lastToast !== null) $.toast().reset('all');
+                        $.toast().reset('all');
                         self._lastToast = null;
                     };
 

@@ -225,4 +225,15 @@ $(function () {
     // Set message
     $changeCallMsg();
 
+    // Delete buttons
+    $callPanel.append('<div class="callBottom"><button id="clearAll" class="btn btn-danger" title="NotificationJS.clearall()">Clear All</button><button id="clearLast" class="btn" title="NotificationJS.clearlast()">Clear Last</button></div>');
+
+    $('#clearAll').on('click', function(){
+        NotificationJS.clearall();
+    });
+
+    $('#clearLast').on('click', function(){
+        NotificationJS.clearlast();
+    });
+
 });
