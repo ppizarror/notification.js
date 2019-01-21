@@ -193,31 +193,31 @@ $(function () {
     let $callPanel = $('.panel-calls');
 
     // Info notification
-    $callPanel.append('<div class="call info noselect" id="callInfo"></div>');
+    $callPanel.append('<div class="call info" id="callInfo"></div>');
     $('#callInfo').on('click', function () {
         NotificationJS.info($('#notificationMessage').val(), $calls.info.params);
     });
 
     // Success notification
-    $callPanel.append('<div class="call success noselect" id="callSuccess"></div>');
+    $callPanel.append('<div class="call success" id="callSuccess"></div>');
     $('#callSuccess').on('click', function () {
         NotificationJS.success($('#notificationMessage').val(), $calls.success.params);
     });
 
     // Warning notification
-    $callPanel.append('<div class="call warn noselect" id="callWarning"></div>');
+    $callPanel.append('<div class="call warn" id="callWarning"></div>');
     $('#callWarning').on('click', function () {
         NotificationJS.warning($('#notificationMessage').val(), $calls.warning.params);
     });
 
     // Error notification
-    $callPanel.append('<div class="call errorcall noselect" id="callError"></div>');
+    $callPanel.append('<div class="call errorcall" id="callError"></div>');
     $('#callError').on('click', function () {
         NotificationJS.error($('#notificationMessage').val(), $calls.error.params);
     });
 
     // Other notification
-    $callPanel.append('<div class="call othercall noselect" id="callOther"></div>');
+    $callPanel.append('<div class="call othercall" id="callOther"></div>');
     $('#callOther').on('click', function () {
         NotificationJS.other($('#notificationMessage').val(), $calls.other.params);
     });
@@ -228,11 +228,11 @@ $(function () {
     // Delete buttons
     $callPanel.append('<div class="callBottom"><button id="clearAll" class="btn btn-danger" title="NotificationJS.clearall()">Clear All</button><button id="clearLast" class="btn" title="NotificationJS.clearlast()">Clear Last</button></div>');
 
-    $('#clearAll').on('click', function(){
+    $('#clearAll').on('click', function () {
         NotificationJS.clearall();
     });
 
-    $('#clearLast').on('click', function(){
+    $('#clearLast').on('click', function () {
         NotificationJS.clearlast();
     });
 

@@ -116,4 +116,4 @@ Where *options*:
 This project is licensed under MIT [https://opensource.org/licenses/MIT]
 
 ## Author
-<a href="http://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018
+<a href="http://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018-2019
