@@ -1,4 +1,5 @@
 # notification.js
+
 Too many different javascript notification libraries, each one with different API's... what about using all them with the same parameters and API?
 
 That's what notification.js does: Extend the same parameters and behaviour to different notification libraries around the internet. So you can change from one to another with zero effort.
@@ -25,7 +26,7 @@ To install the notification libraries look at the instructions on their github p
 
 ## Usage
 
-Demo can be found at http://ppizarror.com/notification.js/
+Demo can be found at https://github.ppizarror.com/notification.js/
 
 ### Init the notification manager
 
@@ -113,7 +114,9 @@ Where *options*:
 - Add more libraries
 
 ## License
+
 This project is licensed under MIT [https://opensource.org/licenses/MIT]
 
 ## Author
-<a href="http://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018-2019
+
+<a href="https://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018-2019
