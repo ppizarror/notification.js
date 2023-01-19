@@ -119,4 +119,4 @@ This project is licensed under MIT [https://opensource.org/licenses/MIT]
 
 ## Author
 
-<a href="https://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018-2019
+[Pablo Pizarro R.](https://ppizarror.com) | 2018 - 2019
