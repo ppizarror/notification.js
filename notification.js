@@ -49,7 +49,7 @@ let NotificationJS;
          * Object pointer
          * @type {_NotificationType}
          */
-        let self = this;
+        const self = this;
 
         /**
          * ------------------------------------------------------------------------
@@ -262,10 +262,8 @@ let NotificationJS;
         /**
          * Object pointer
          * @type {_NotificationManager}
-         * @private
-         * @ignore
          */
-        let self = this;
+        const self = this;
 
         /**
          * Inits notification manager

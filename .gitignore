@@ -1,5 +1,6 @@
-# Webstorm files
+# IDE
 .idea/
+.vscode/
 
 # Root min files
 /*.min.js
