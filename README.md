@@ -26,7 +26,7 @@ To install the notification libraries look at the instructions on their github p
 
 ## Usage
 
-Demo can be found at https://github.ppizarror.com/notification.js/
+Demo can be found at https://ppizarror.github.io/notification.js/
 
 ### Init the notification manager
 
